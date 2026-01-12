@@ -107,7 +107,18 @@ jobs:
         #     args: ${{ github.event.repository.default_branch }} HEAD
         with:
             args: --fail-verified ${{ github.event.repository.default_branch }} HEAD
+  docker_chek:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
+      - name: Lint all Dockerfiles
+        run: |
+          for file in $(find docker -name Dockerfile); do
+            echo "Linting $file..."
+            hadolint "$file"
+          done
 
   build:
     name: Build Docker Image

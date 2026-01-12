@@ -110,16 +110,19 @@ jobs:
   docker_chek:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Install Hadolint
+        run: |
+          curl -sSL https://github.com/hadolint/hadolint/releases/latest/download/hadolint-Linux-x86_64 -o /usr/local/bin/hadolint
+          chmod +x /usr/local/bin/hadolint
 
       - name: Lint all Dockerfiles
         run: |
-          curl -sSL https://github.com/hadolint/hadolint/releases/latest/download/hadolint-Linux-x86_64 -o /usr/local/bin/hadolint && \
-          chmod +x /usr/local/bin/hadolint && \
           for file in $(find docker -name Dockerfile); do
             echo "Linting $file..."
-            hadolint "$file"
+            hadolint --failure-threshold error "$file"
           done
 
   build:

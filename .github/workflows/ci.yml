@@ -92,6 +92,23 @@ jobs:
       - name: Run tests
         working-directory: ./sportsclub
         run: python manage.py test --verbosity=2
+  
+  secrets:
+    name: Secrets Scan (TruffleHog)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run TruffleHog
+        uses: trufflesecurity/trufflehog@v3
+        with:
+          path: .
+          base: ${{ github.event.pull_request.base.sha || github.sha }}
+          head: ${{ github.event.pull_request.head.sha || github.sha }}
+          # extra_args: --only-verified ## debe estar pero no me sirve para simulacro
+
 
   build:
     name: Build Docker Image

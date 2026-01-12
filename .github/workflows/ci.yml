@@ -115,6 +115,8 @@ jobs:
 
       - name: Lint all Dockerfiles
         run: |
+          curl -sSL https://github.com/hadolint/hadolint/releases/latest/download/hadolint-Linux-x86_64 -o /usr/local/bin/hadolint && \
+          chmod +x /usr/local/bin/hadolint && \
           for file in $(find docker -name Dockerfile); do
             echo "Linting $file..."
             hadolint "$file"

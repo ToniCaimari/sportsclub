@@ -10,4 +10,3 @@ class Discipline(str, Enum):
     RELAYS = "relays"
     HIGH_JUMP = "high_jump"
     LONG_JUMP = "long_jump"
-

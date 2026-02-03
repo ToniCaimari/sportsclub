@@ -28,7 +28,7 @@ jobs:
 
     steps:
       - name: Show GIT_ENV
-        run: echo "GIT_ENV=$GIT_ENV"
+        run: echo "GIT_ENV=${{ vars.GIT_ENV }}"
 
   check-prod:
     name: Check GIT_ENV (prod)
@@ -38,7 +38,7 @@ jobs:
 
     steps:
       - name: Show GIT_ENV
-        run: echo "GIT_ENV=$GIT_ENV"
+        run: echo "GIT_ENV=${{ vars.GIT_ENV }}"
     
   lint:
     name: Lint

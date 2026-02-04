@@ -20,6 +20,26 @@ env:
   POSTGRES_PORT: 5432
 
 jobs:
+  check-dev:
+    name: Check GIT_ENV (develop)
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/develop'
+    environment: develop
+
+    steps:
+      - name: Show GIT_ENV
+        run: echo "GIT_ENV=${{ vars.GIT_ENV }}"
+
+  check-prod:
+    name: Check GIT_ENV (prod)
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    environment: prod
+
+    steps:
+      - name: Show GIT_ENV
+        run: echo "GIT_ENV=${{ vars.GIT_ENV }}"
+    
   lint:
     name: Lint
     runs-on: ubuntu-latest

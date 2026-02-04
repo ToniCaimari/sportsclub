@@ -1,6 +1,6 @@
 # GithubPushProtection
-![alt text](GithubPushProtection.jpg)
+![alt text](img/GithubPushProtection.jpg)
 
 # Hadolint failure msg
-![alt text](hadolint.jpg)
+![alt text](img/hadolint.jpg)
 [hadolint docu](https://github.com/hadolint/hadolint)

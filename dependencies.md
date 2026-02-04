@@ -21,4 +21,4 @@ En quant el pipeline s'inici, el dependabot llançarà un job propi (no fa falta
 **PERÒ** si tornam a la secció Security del projecte i entram a la part de dependabot podem veure informes sobre vulnerabilitats:
 ![](img/Dependabot_análisi.png)
 
-Com podem veure efectivament és necessaria una revissió de les dependències sobretot per suplir el risc d'SWLInjection que presenta la versió Django del requirements.
+Com podem veure efectivament és necessaria una revissió de les dependències sobretot per suplir el risc d'SQLInjection que presenta la versió Django del requirements.

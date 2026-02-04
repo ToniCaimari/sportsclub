@@ -22,3 +22,10 @@ En quant el pipeline s'inici, el dependabot llançarà un job propi (no fa falta
 ![](img/Dependabot_análisi.png)
 
 Com podem veure efectivament és necessaria una revissió de les dependències sobretot per suplir el risc d'SQLInjection que presenta la versió Django del requirements.
+
+El dependabot prepara els pull request a la branca que tenguis predefinida com a base (en aquest cas main) així que he decidit posar develop com branca base ja que plantejo la main actual com "prod".
+
+Aquí podem veure com la pull request canviarà les versions i hashes del django:
+![](img/Dependabot_cambios.png) 
+
+Al final Dependabot ha estat llançant múltiples pull requests que he anat acceptant i llançant una a una. A la configuració del bot es pot permetre que les llanci per si sol però ho he considerat poc segur i que augmenta les possibilitats de conflictes al codi en entorns on més d'una persona estigui treballant al mateix projecte.terminal

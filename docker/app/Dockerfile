@@ -7,6 +7,8 @@ ENV PYTHONDONTWRITEBYTECODE=1
 # ENV PYTHONUNBUFFERED=1
 ENV PYTHONUNBUFFERED=1
 
+RUN useradd -m appuser
+
 
 # Set work directory
 WORKDIR /app
@@ -23,6 +25,10 @@ RUN pip install --no-cache-dir uvicorn
 
 # Copy project
 COPY sportsclub/ .
+
+RUN chown -R appuser:appuser .
+
+USER appuser
 
 # Collect static files (needed when serving through a reverse proxy)
 RUN python manage.py collectstatic --noinput

@@ -34,8 +34,8 @@ jobs:
           file: docker/app/Dockerfile
           push: true
           tags: |
-            acaimari/sportsclub/sc-app:latest
-            acaimari/sportsclub/sc-app:${{ github.sha }}
+            acaimari/sportsclub-app:latest
+            acaimari/sportsclub-app:${{ github.sha }}
 
       - name: Build and push Nginx Image
         uses: docker/build-push-action@v5
@@ -44,8 +44,8 @@ jobs:
           file: docker/nginx/Dockerfile
           push: true
           tags: |
-            acaimari/sportsclub/sc-nginx:latest
-            acaimari/sportsclub/sc-nginx:${{ github.sha }}
+            acaimari/sportsclub-nginx:latest
+            acaimari/sportsclub-nginx:${{ github.sha }}
 
       - name: Build and push Postgres Image
         uses: docker/build-push-action@v5
@@ -54,5 +54,5 @@ jobs:
           file: docker/postgres/Dockerfile
           push: true
           tags: |
-            acaimari/sportsclub/sc-postgres:latest
-            acaimari/sportsclub/sc-postgres:${{ github.sha }}
+            acaimari/sportsclub-postgres:latest
+            acaimari/sportsclub-postgres:${{ github.sha }}

@@ -1,0 +1,57 @@
+name: Docker Publish
+
+on:
+  workflow_run:
+    workflows: ["CI"]
+    types:
+      - completed
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and push App Image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: docker/app/Dockerfile
+          push: true
+          tags: |
+            acaimari/sportsclub/SC-app:latest
+            acaimari/sportsclub/SC-app:${{ github.sha }}
+
+      - name: Build and push Nginx Image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: docker/nginx/Dockerfile
+          push: true
+          tags: |
+            acaimari/sportsclub/SC-nginx:latest
+            acaimari/sportsclub/SC-nginx:${{ github.sha }}
+
+      - name: Build and push Postgres Image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: docker/postgres/Dockerfile
+          push: true
+          tags: |
+            acaimari/sportsclub/SC-postgres:latest
+            acaimari/sportsclub/SC-postgres:${{ github.sha }}

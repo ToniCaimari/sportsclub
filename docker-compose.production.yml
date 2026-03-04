@@ -1,0 +1,22 @@
+services:
+
+  postgres:
+    env_file:
+      - .env.production
+    environment: !reset []
+    restart: always
+    ports: !reset []
+  app-blue:
+    env_file:
+      - .env.production
+    environment: !reset []
+    restart: always
+  app-green:
+    env_file:
+      - .env.production
+    environment: !reset []
+    restart: always
+  nginx:
+    ports: !override
+      - "80:80"
+    restart: always

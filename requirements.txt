@@ -41,9 +41,9 @@ django-nanoid-field==0.1.5 \
     --hash=sha256:c83269ae24d06e3099bedbc180fa8517b310e10727ba5a3d844d99daf2e5df2f \
     --hash=sha256:dd52887676d7fd1a0ec9e3510d8871235fec7cc28f0b3dcb5bd37ab2efa09fdd
     # via -r requirements.in
-django-ninja==1.5.3 \
-    --hash=sha256:0a6ead5b4e57ec1050b584eb6f36f105f256b8f4ac70d12e774d8b6dd91e2198 \
-    --hash=sha256:974803944965ad0566071633ffd4999a956f2ad1ecbed815c0de37c1c969592b
+django-ninja==1.6.0 \
+    --hash=sha256:44c6e3f5f1b929cf51f645004715b36326ea32fddf1a94026c4917de8d230135 \
+    --hash=sha256:dd84230931f511503a251ac090200c65fd0be25a16ba2b9140073b814decc201
     # via -r requirements.in
 django-ratelimit==4.1.0 \
     --hash=sha256:555943b283045b917ad59f196829530d63be2a39adb72788d985b90c81ba808b \
